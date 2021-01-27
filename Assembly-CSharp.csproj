@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{2053AA52-9BD7-9711-81A1-353CE4BF990B}</ProjectGuid>
+    <ProjectGuid>{E631F63F-214D-B584-9D01-6A2EB5995C97}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,22 +55,22 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Resources\Scripts\snakeGenerator.cs" />
-    <Compile Include="Assets\Resources\Scripts\foodGenerator.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\snakeGenerator.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\Assignment 1\KU4PatrolBehaviourScript.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\foodGenerator.cs" />
     <Compile Include="Assets\highScoreController.cs" />
     <Compile Include="Assets\agentScript.cs" />
     <Compile Include="Assets\Resources\PlayerPrefsX.cs" />
-    <Compile Include="Assets\Resources\Scripts\squareGenerator.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\squareGenerator.cs" />
     <Compile Include="Assets\exerciseScript.cs" />
-    <Compile Include="Assets\Resources\Scripts\snakeheadController.cs" />
-    <Compile Include="Assets\Assignment 1\Scripts\TASK 1\GameManger.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\snakeheadController.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\GameManger.cs" />
     <Compile Include="Assets\Resources\Scripts\UIScripts\eventsController.cs" />
     <Compile Include="Assets\customAIMoveScript.cs" />
     <Compile Include="Assets\Resources\Scripts\UIScripts\timerManager.cs" />
     <Compile Include="Assets\customAIMoveScriptGrid.cs" />
-    <Compile Include="Assets\Assignment 1\Scripts\obstacleMovementScript.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\Assignment 1\obstacleMovementScript.cs" />
     <Compile Include="Assets\Resources\Scripts\UIScripts\startGameController.cs" />
-    <Compile Include="Assets\Assignment 1\Scripts\KU4PatrolBehaviourScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -694,15 +694,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="AstarPathfindingProject.csproj">
-      <Project>{5817C590-97E9-27C8-C0CC-4B630E53DA51}</Project>
+      <Project>{94C23004-DE2A-5AEC-1C9C-099991F00682}</Project>
       <Name>AstarPathfindingProject</Name>
     </ProjectReference>
     <ProjectReference Include="PackageToolsEditor.csproj">
-      <Project>{36520F43-6A1A-4572-1667-899CC6AE6B9C}</Project>
+      <Project>{AD09DCBE-608A-DB29-DA84-7A0AEB564469}</Project>
       <Name>PackageToolsEditor</Name>
     </ProjectReference>
     <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
-      <Project>{578331A5-7447-6873-DF47-2BB09D2AAD99}</Project>
+      <Project>{09598BB5-164A-4536-1136-84A24E908F11}</Project>
       <Name>AstarPathfindingProjectEditor</Name>
     </ProjectReference>
   </ItemGroup>

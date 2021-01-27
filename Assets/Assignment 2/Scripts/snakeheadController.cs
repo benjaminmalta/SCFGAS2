@@ -65,35 +65,35 @@ public class snakeheadController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
 
-            Debug.LogWarning("Closest food" + findClosestFood());
+            //Debug.LogWarning("Closest food" + findClosestFood());
             transform.position -= new Vector3(1f,0);
             checkBounds();
-            myfoodgenerator.eatFood(this.transform.position);
+            //myfoodgenerator.eatFood(this.transform.position);
             Debug.Log(mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength));
 
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Debug.LogWarning("Closest food" + findClosestFood());
+            //Debug.LogWarning("Closest food" + findClosestFood());
             transform.position += new Vector3(1f, 0);
             checkBounds();
-            myfoodgenerator.eatFood(this.transform.position);
+            //myfoodgenerator.eatFood(this.transform.position);
             Debug.Log(mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength));
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.LogWarning("Closest food" + findClosestFood());
+            //Debug.LogWarning("Closest food" + findClosestFood());
             transform.position += new Vector3(0, 1f);
             checkBounds();
-            myfoodgenerator.eatFood(this.transform.position);
+            //myfoodgenerator.eatFood(this.transform.position);
             Debug.Log(mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength));
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Debug.LogWarning("Closest food" + findClosestFood());
+            //Debug.LogWarning("Closest food" + findClosestFood());
             transform.position -= new Vector3(0, 1f);
             checkBounds();
-            myfoodgenerator.eatFood(this.transform.position);
+            //myfoodgenerator.eatFood(this.transform.position);
             Debug.Log(mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength));
         }
 

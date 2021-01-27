@@ -3,87 +3,12 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-
-public class positionRecord
-
-{
-
-
-    //the place where I've been
-    Vector3 position;
-    //at which point was I there?
-    int positionOrder;
-
-    //positionRecord{positionorder = 1, position = new Vector3(1f,1f);}
-
-    //positionRecord2{positionorder = 1, position = new Vector3(1.5f,1f);}
-
-    //positionRecord == positionRecord2
-
-    //List<positionRecord>() myList
-
-    //positionRecord1,positionRecord2
-
-    //myList.Contains(positionRecord2); == true
-
-
-
-    
-
-    GameObject breadcrumbBox;
-
-    public void changeColor()
-    {
-        this.BreadcrumbBox.GetComponent<SpriteRenderer>().color = Color.black;
-    }
-
-
-//==
-//1.Equals(1) = true
-
-    //this method exists in every object in C sharp
-
-
-    public override bool Equals(System.Object obj)
-    {
-        if (obj == null)
-            return false;
-        positionRecord p = obj as positionRecord;
-        if ((System.Object)p == null)
-            return false;
-        return position == p.position;
-    }
-
-
-    public bool Equals(positionRecord o)
-    {
-        if (o == null)
-            return false;
-
-        
-            //the distance between any food spawned
-            return Vector3.Distance(this.position,o.position) < 2f;
-       
-       
-    }
-
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
-    }
-
-
-
-
-    public Vector3 Position { get => position; set => position = value; }
-    public int PositionOrder { get => positionOrder; set => positionOrder = value; }
-    public GameObject BreadcrumbBox { get => breadcrumbBox; set => breadcrumbBox = value; }
-}
-
 public class snakeGenerator : MonoBehaviour
 {
 
     public int snakelength;
+    public GameObject square;
+    public GameObject timer;
 
     foodGenerator fgen;
     snakeheadController snakeController;
@@ -110,7 +35,7 @@ public class snakeGenerator : MonoBehaviour
         {
             if (!firstrun)
             {
-                StartCoroutine(fgen.generateFood());
+                //tartCoroutine(fgen.generateFood());
                 break;
             }
 
@@ -127,9 +52,9 @@ public class snakeGenerator : MonoBehaviour
 
         snakeColor = Color.green;
 
-        playerBox = Instantiate(Resources.Load<GameObject>("Prefabs/Square"), new Vector3(0f, 0f), Quaternion.identity);
+        playerBox = Instantiate(square, new Vector3(0f, 0f), Quaternion.identity);
 
-        timerUI = Instantiate(Resources.Load<GameObject>("Prefabs/Timer"), new Vector3(0f, 0f), Quaternion.identity);
+        timerUI = Instantiate(timer, new Vector3(0f, 0f), Quaternion.identity);
 
         //the default value for the timer is started
         timerUI.GetComponentInChildren<timerManager>().timerStarted = true;
@@ -144,7 +69,7 @@ public class snakeGenerator : MonoBehaviour
         pathParent.name = "Path Parent";
 
         
-        breadcrumbBox = Resources.Load <GameObject>("Prefabs/Square");
+        breadcrumbBox = square;
 
         playerBox.GetComponent<SpriteRenderer>().color = Color.black;
 
@@ -157,7 +82,7 @@ public class snakeGenerator : MonoBehaviour
 
         fgen = Camera.main.GetComponent<foodGenerator>();
 
-        StartCoroutine(waitToGenerateFood());
+        //StartCoroutine(waitToGenerateFood());
 
         drawTail(snakelength);
        
@@ -439,3 +364,77 @@ public class snakeGenerator : MonoBehaviour
 
     }
 }
+
+public class positionRecord
+{
+    //the place where I've been
+    Vector3 position;
+    //at which point was I there?
+    int positionOrder;
+
+    //positionRecord{positionorder = 1, position = new Vector3(1f,1f);}
+
+    //positionRecord2{positionorder = 1, position = new Vector3(1.5f,1f);}
+
+    //positionRecord == positionRecord2
+
+    //List<positionRecord>() myList
+
+    //positionRecord1,positionRecord2
+
+    //myList.Contains(positionRecord2); == true
+
+
+
+
+
+    GameObject breadcrumbBox;
+
+    public void changeColor()
+    {
+        this.BreadcrumbBox.GetComponent<SpriteRenderer>().color = Color.black;
+    }
+
+
+    //==
+    //1.Equals(1) = true
+
+    //this method exists in every object in C sharp
+
+
+    public override bool Equals(System.Object obj)
+    {
+        if (obj == null)
+            return false;
+        positionRecord p = obj as positionRecord;
+        if ((System.Object)p == null)
+            return false;
+        return position == p.position;
+    }
+
+
+    public bool Equals(positionRecord o)
+    {
+        if (o == null)
+            return false;
+
+
+        //the distance between any food spawned
+        return Vector3.Distance(this.position, o.position) < 2f;
+
+
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+
+
+
+    public Vector3 Position { get => position; set => position = value; }
+    public int PositionOrder { get => positionOrder; set => positionOrder = value; }
+    public GameObject BreadcrumbBox { get => breadcrumbBox; set => breadcrumbBox = value; }
+}
+
