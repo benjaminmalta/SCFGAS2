@@ -6,10 +6,11 @@ using UnityEngine;
 public class KU4PatrolBehaviourScript : MonoBehaviour
 {
 
-    public List<Transform> waypoints;
+    //public List<Transform> waypoints;
    
     private int index = 0;
 
+    public Transform target;
 
     //the object that we are using to generate the path
     Seeker seeker;
@@ -47,9 +48,8 @@ public class KU4PatrolBehaviourScript : MonoBehaviour
         graphParent = GameObject.Find("AStarGrid");
         //we scan the graph to generate it in memory
         graphParent.GetComponent<AstarPath>().Scan();
-        ;
-        //generate the initial path
-        pathToFollow = seeker.StartPath(transform.position, waypoints[index].position);
+
+        pathToFollow = seeker.StartPath(transform.position, target.position);
 
 
         StartCoroutine(moveTowardsEnemy(this.transform));
@@ -65,17 +65,11 @@ public class KU4PatrolBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        if (this.transform.position == waypoints[index].position) 
-        {
-            index++;
-            if (index > 9) {
-                index = 0;
-            }
 
-            pathToFollow = seeker.StartPath(transform.position, waypoints[index].position);
 
-        }
+        
+
+        
 
 
     }
@@ -105,10 +99,9 @@ public class KU4PatrolBehaviourScript : MonoBehaviour
     {
 
         while (true)
-        {
-
+        {            
             List<Vector3> posns = pathToFollow.vectorPath;
-            Debug.Log("Positions Count: " + posns.Count);
+            print("Positions Count: " + posns.Count);
 
             for (int counter = 0; counter < posns.Count; counter++)
             {
@@ -119,7 +112,7 @@ public class KU4PatrolBehaviourScript : MonoBehaviour
                     {
                         t.position = Vector3.MoveTowards(t.position, posns[counter], 1f);
                         //since the enemy is moving, I need to make sure that I am following him
-                        pathToFollow = seeker.StartPath(t.position, waypoints[index].position);
+                        pathToFollow = seeker.StartPath(t.position, target.position);
                         //wait until the path is generated
                         yield return seeker.IsDone();
                         //if the path is different, update the path that I need to follow
@@ -132,7 +125,7 @@ public class KU4PatrolBehaviourScript : MonoBehaviour
                 }
                 //keep looking for a path because if we have arrived the enemy will anyway move away
                 //This code allows us to keep chasing
-                pathToFollow = seeker.StartPath(t.position, waypoints[index].position);
+                pathToFollow = seeker.StartPath(t.position, target.position);
                 yield return seeker.IsDone();
                 posns = pathToFollow.vectorPath;
                 //yield return null;

@@ -14,7 +14,7 @@ public class customAIMoveScriptGrid : MonoBehaviour
     Path pathToFollow;
 
     //a reference from the UI to the green box
-    public Transform target;
+    Transform target;
 
     //a reference to PointGraphObject
     GameObject graphParent;
@@ -28,13 +28,14 @@ public class customAIMoveScriptGrid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("Target").transform;
 
         Debug.Log(this.name);
 
         //the instance of the seeker attached to this game object
         seeker = GetComponent<Seeker>();
 
+        target = GameObject.Find("Blackplayerbox").transform;
+        pathToFollow = seeker.StartPath(transform.position, target.position);
 
         //node target by name
         targetNode = GameObject.Find("TargetNode");
@@ -44,9 +45,10 @@ public class customAIMoveScriptGrid : MonoBehaviour
         graphParent = GameObject.Find("AStarGrid");
         //we scan the graph to generate it in memory
         graphParent.GetComponent<AstarPath>().Scan();
-
+        //target = GameObject.Find("Blackplayerbox").transform;
         //generate the initial path
-        pathToFollow = seeker.StartPath(transform.position, target.position);
+        
+       
 
 
         StartCoroutine(moveTowardsEnemy(this.transform));
@@ -57,8 +59,16 @@ public class customAIMoveScriptGrid : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+        
+        print("Position of playerbox"+target.position);
+       
 
-    
+    }
+
+
+
 
 
     IEnumerator updateGraph()
