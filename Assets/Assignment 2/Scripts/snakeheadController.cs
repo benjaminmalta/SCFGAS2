@@ -7,8 +7,9 @@ public class snakeheadController : MonoBehaviour
 {
     snakeGenerator mysnakegenerator;
     foodGenerator myfoodgenerator,myfoodgenerator2;
-
+    Transform targetLocation;
    
+
     public Vector3 findClosestFood()
     {
         if (myfoodgenerator.allTheFood.Count > 0)
@@ -38,20 +39,42 @@ public class snakeheadController : MonoBehaviour
     {
         mysnakegenerator = Camera.main.GetComponent<snakeGenerator>();
         myfoodgenerator = Camera.main.GetComponent<foodGenerator>();
+
+        targetLocation = GameObject.Find("Target").GetComponent<Transform>();
+        
         
 
     }
+    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        print("Collided with: " + collision.transform.tag);
+        
+    }
+
+
 
     void checkBounds()
     {
-        if ((transform.position.x < -(Camera.main.orthographicSize-1)) || (transform.position.x > (Camera.main.orthographicSize - 1)))
+        if ((transform.position.x < -(Camera.main.orthographicSize)))
         {
-            transform.position = new Vector3(-transform.position.x,transform.position.y);
+            transform.position = new Vector3(-transform.position.x - 1,transform.position.y);
         }
 
-        if ((transform.position.y < -(Camera.main.orthographicSize - 1)) || (transform.position.y > (Camera.main.orthographicSize - 1)))
+        if ((transform.position.x > (Camera.main.orthographicSize)))
         {
-            transform.position = new Vector3(transform.position.x, -transform.position.y);
+            transform.position = new Vector3(-transform.position.x + 1, transform.position.y);
+        }
+
+        if ((transform.position.y < -(Camera.main.orthographicSize)))
+        {
+            transform.position = new Vector3(transform.position.x, -transform.position.y -1);
+        }
+
+        if ((transform.position.y > (Camera.main.orthographicSize)))
+        {
+            transform.position = new Vector3(transform.position.x, -transform.position.y +1);
         }
 
 
@@ -60,6 +83,10 @@ public class snakeheadController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (this.transform.position == targetLocation.position)
+        {
+            print("Snake Reached Target");
+        }
 
         
         if (Input.GetKeyDown(KeyCode.LeftArrow))

@@ -24,6 +24,12 @@ public class GameManager : MonoBehaviour
     }
 
 
+
+
+
+
+
+    
     private void Task1() 
     {
         //The order of executution of these methods is intentional to 
