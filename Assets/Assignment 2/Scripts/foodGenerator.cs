@@ -9,11 +9,10 @@ public class foodGenerator : MonoBehaviour
     public GameObject foodObject;
 
     public List<positionRecord> allTheFood;
-
-
+        
     snakeGenerator sn;
 
-
+    
 
     int getVisibleFood()
     {
@@ -78,25 +77,30 @@ public class foodGenerator : MonoBehaviour
     {
         while(true)
         {
-            if (getVisibleFood() < 6) { 
-                yield return new WaitForSeconds(Random.Range(1f, 3f));
+            if (getVisibleFood() < 6) {
 
-                foodPosition = new positionRecord();
+                Vector3 randomLocation;
+                do
+                {
+                    yield return new WaitForSeconds(0.5f);
 
-                float randomX = Mathf.Floor(Random.Range(-9f, 9f));
+                    foodPosition = new positionRecord();
 
-                float randomY = Mathf.Floor(Random.Range(-9f, 9f));
+                    float randomX = Mathf.Floor(Random.Range(-9f, 9f));
 
-                Vector3 randomLocation = new Vector3(randomX, randomY);
+                    float randomY = Mathf.Floor(Random.Range(-9f, 9f));
+
+                    randomLocation = new Vector3(randomX + 0.5f, randomY + 0.5f);
+                }
+                while (Physics2D.OverlapCircleAll(randomLocation, 0.1f).Length != 0);
+
 
                 //don't allow the food to be spawned on other food
 
                 foodPosition.Position = randomLocation;
 
                 if (!allTheFood.Contains(foodPosition) && !sn.hitTail(foodPosition.Position,sn.snakelength))
-
-                {
-
+                {                                     
                     foodPosition.BreadcrumbBox = Instantiate(foodObject, randomLocation, Quaternion.Euler(0f, 0f, 45f));
 
 
@@ -127,11 +131,14 @@ public class foodGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+       
+
         foodPosition = new positionRecord();
 
         allTheFood = new List<positionRecord>();
 
-       
+        
 
         sn = Camera.main.GetComponent<snakeGenerator>();
 

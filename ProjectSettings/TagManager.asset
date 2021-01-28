@@ -6,6 +6,7 @@ TagManager:
   tags:
   - targetnode
   - Robot
+  - Walls
   layers:
   - Default
   - TransparentFX
