@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManger : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public GameObject robotAI;
     public GameObject obstacleObject;
@@ -13,14 +13,14 @@ public class GameManger : MonoBehaviour
 
     private void Start()
     {
-        if(SceneManager.GetActiveScene().name == "Task1")
+        if(SceneManager.GetActiveScene().name == "Level1")
         {
-            Task1();
+            Camera.main.GetComponent<foodGenerator>().enabled = true;
+           Camera.main.GetComponent<snakeGenerator>().enabled = true;
+           //Camera.main.GetComponent<enemySnakeGenerators>().enabled = true;
+           
         }
-        if (SceneManager.GetActiveScene().name == "Task2")
-        {
-            Task2();
-        }
+      
     }
 
 

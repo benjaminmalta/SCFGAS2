@@ -6,7 +6,7 @@ public class foodGenerator : MonoBehaviour
 {
     positionRecord foodPosition;
 
-    GameObject foodObject;
+    public GameObject foodObject;
 
     public List<positionRecord> allTheFood;
 
@@ -131,11 +131,11 @@ public class foodGenerator : MonoBehaviour
 
         allTheFood = new List<positionRecord>();
 
-        foodObject = Resources.Load<GameObject>("Prefabs/Square");
+       
 
         sn = Camera.main.GetComponent<snakeGenerator>();
 
-       // StartCoroutine(generateFood());
+        StartCoroutine(generateFood());
 
 
     }

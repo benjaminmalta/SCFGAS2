@@ -68,33 +68,53 @@ public class snakeheadController : MonoBehaviour
             //Debug.LogWarning("Closest food" + findClosestFood());
             transform.position -= new Vector3(1f,0);
             checkBounds();
-            //myfoodgenerator.eatFood(this.transform.position);
+            myfoodgenerator.eatFood(this.transform.position);
             Debug.Log(mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength));
 
+            if (mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength))
+            {
+                print("DIE!");
+            }
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             //Debug.LogWarning("Closest food" + findClosestFood());
             transform.position += new Vector3(1f, 0);
             checkBounds();
-            //myfoodgenerator.eatFood(this.transform.position);
+            myfoodgenerator.eatFood(this.transform.position);
             Debug.Log(mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength));
+
+            if (mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength))
+            {
+                print("DIE!");
+            }
+
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             //Debug.LogWarning("Closest food" + findClosestFood());
             transform.position += new Vector3(0, 1f);
             checkBounds();
-            //myfoodgenerator.eatFood(this.transform.position);
+            myfoodgenerator.eatFood(this.transform.position);
             Debug.Log(mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength));
+
+            if (mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength))
+            {
+                print("DIE!");
+            }
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             //Debug.LogWarning("Closest food" + findClosestFood());
             transform.position -= new Vector3(0, 1f);
             checkBounds();
-            //myfoodgenerator.eatFood(this.transform.position);
+            myfoodgenerator.eatFood(this.transform.position);
             Debug.Log(mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength));
+
+            if (mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength))
+            {
+                print("DIE!");
+            }
         }
 
         

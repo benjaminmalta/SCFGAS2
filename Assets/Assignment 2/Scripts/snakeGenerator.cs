@@ -9,6 +9,7 @@ public class snakeGenerator : MonoBehaviour
     public int snakelength;
     public GameObject square;
     public GameObject timer;
+    public Transform spawnpoint;
 
     foodGenerator fgen;
     snakeheadController snakeController;
@@ -18,7 +19,7 @@ public class snakeGenerator : MonoBehaviour
 
     GameObject playerBox,breadcrumbBox,pathParent,timerUI;
 
-    public GameObject AI;
+    
 
     List<positionRecord> pastPositions;
 
@@ -54,8 +55,8 @@ public class snakeGenerator : MonoBehaviour
 
         snakeColor = Color.green;
 
-        playerBox = Instantiate(square, new Vector3(0f, 0f), Quaternion.identity);
-        Instantiate(AI, new Vector3(10f, 10f), Quaternion.identity);
+        playerBox = Instantiate(square, spawnpoint.position, Quaternion.identity);
+        //GetComponent<enemySnakeGenerators>().SpawnSnakes();
         timerUI = Instantiate(timer, new Vector3(0f, 0f), Quaternion.identity);
 
         //the default value for the timer is started
@@ -258,7 +259,7 @@ public class snakeGenerator : MonoBehaviour
                 //prints the past position and its order in the list
                 //Debug.Log(pastPositions[snakeblocks].Position + " " + pastPositions[snakeblocks].PositionOrder);
 
-                Debug.Log(snakeblocks);
+                //Debug.Log(snakeblocks);
 
                 pastPositions[snakeblocks].BreadcrumbBox = Instantiate(breadcrumbBox, pastPositions[snakeblocks].Position, Quaternion.identity);
                 pastPositions[snakeblocks].BreadcrumbBox.GetComponent<SpriteRenderer>().color = snakeColor;
@@ -274,8 +275,8 @@ public class snakeGenerator : MonoBehaviour
             for(int count =length;count>0;count--)
             {
                 positionRecord fakeBoxPos = new positionRecord();
-                float ycoord = count * -1;
-                fakeBoxPos.Position = new Vector3(0f, ycoord);
+                float ycoord = spawnpoint.position.y - count;
+                fakeBoxPos.Position = new Vector3(spawnpoint.position.x, ycoord);
                // Debug.Log(new Vector3(0f, ycoord));
                 //fakeBoxPos.BreadcrumbBox = Instantiate(breadcrumbBox, fakeBoxPos.Position, Quaternion.identity);
                 //fakeBoxPos.BreadcrumbBox.GetComponent<SpriteRenderer>().color = Color.yellow;

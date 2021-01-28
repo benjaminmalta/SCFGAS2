@@ -64,7 +64,7 @@
     <Compile Include="Assets\Assignment 2\Scripts\squareGenerator.cs" />
     <Compile Include="Assets\exerciseScript.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\snakeheadController.cs" />
-    <Compile Include="Assets\Assignment 2\Scripts\GameManger.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\GameManager.cs" />
     <Compile Include="Assets\Resources\Scripts\UIScripts\eventsController.cs" />
     <Compile Include="Assets\customAIMoveScript.cs" />
     <Compile Include="Assets\Resources\Scripts\UIScripts\timerManager.cs" />
