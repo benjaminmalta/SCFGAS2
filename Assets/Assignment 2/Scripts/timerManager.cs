@@ -52,7 +52,20 @@ public class timerManager : MonoBehaviour
             }
             
         }
+
+        if (timerPaused) 
+        {
+            float minutes = timerValue / 60f;
+            float seconds = timerValue % 60f;
+            timerText.color = Color.yellow;
+            
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        }
+
     }
+
+    
 
     
     
