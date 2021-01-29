@@ -625,7 +625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AI: {fileID: 8643994906171561233, guid: f0e104f2078fe2842abbfa769d82d1eb, type: 3}
   breadcrumbBox: {fileID: 8087725052837249148, guid: 8ca1c9a1c2cfa204684ee152cca06f69, type: 3}
-  snakelength: 2
+  snakelength: 4
   spawnLocation: {fileID: 147650883}
 --- !u!114 &1567364342
 MonoBehaviour:
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1313bb029782674439ae144023ea1f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodObject: {fileID: 8087725052837249148, guid: 8ca1c9a1c2cfa204684ee152cca06f69, type: 3}
+  foodObject: {fileID: 8087725052837249148, guid: f21b75c76a4fc8646a852e985023482a, type: 3}
 --- !u!1001 &1760858179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -879,7 +879,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009036848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: 14.5, y: -8.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
