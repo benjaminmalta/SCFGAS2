@@ -16,14 +16,16 @@ public class enemySnakeGenerators : MonoBehaviour
     List<positionRecord> pastPositions;
     int positionorder = 0;
 
-    
+    float time= 0f;
+    bool doOnce = true;
+
 
     bool firstrun = true;
     // Start is called before the first frame update
     void Start()
     {
         
-        SpawnSnakes();
+        //SpawnSnakes();
 
 
 
@@ -39,22 +41,43 @@ public class enemySnakeGenerators : MonoBehaviour
     void Update()
     {
         //clearTail();
+        //print(pastPositions.Count);
 
-        print(pastPositions.Count);
-
+        if (doOnce) { 
+        time = time + Time.deltaTime;
+        if (time > 3) 
+        {
+            randomFoodSpawn();
+            time = 0;
+            doOnce = false;
+        }
+        }
 
     }
 
-    public void SpawnSnakes() 
+    public void SpawnSnakes(Vector3 spawn) 
     {
         
-        enemyBox = Instantiate(AI, spawnLocation.position, Quaternion.identity);
+        enemyBox = Instantiate(AI, spawn, Quaternion.identity);
         enemyBox.GetComponent<SpriteRenderer>().color = Color.red;
         enemyBox.name = "AISnake";
 
         pastPositions = new List<positionRecord>();
 
         drawTail(snakelength);
+
+    }
+
+    public void randomFoodSpawn()
+    {
+        foodGenerator foodGen = Camera.main.GetComponent<foodGenerator>();
+        int foodAmmount = foodGen.allTheFood.Count;
+        print("Food spawned after 3 seconds" + foodAmmount);
+
+        Vector3 randomFoodPos = foodGen.allTheFood[Random.Range(0, foodAmmount-1)].Position;
+        SpawnSnakes(randomFoodPos);
+
+
 
     }
 
@@ -112,10 +135,10 @@ public class enemySnakeGenerators : MonoBehaviour
     public void drawTail(int length)
     {
         clearTail();
-        print("AT drawtail " + pastPositions.Count);
+        //print("AT drawtail " + pastPositions.Count);
         if (pastPositions.Count > length)
         {
-            print("AT drawtail IF");
+            //print("AT drawtail IF");
             //nope
             //I do have enough positions in the past positions list
             //the first block behind the player

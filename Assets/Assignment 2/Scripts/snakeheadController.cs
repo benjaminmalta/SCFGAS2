@@ -56,18 +56,20 @@ public class snakeheadController : MonoBehaviour
             {
                 if (mysnakegenerator.snakelength >= 6) 
                 { 
-                SceneManager.LoadScene("Level2");
+                    SceneManager.LoadScene("Level2");
                 }
             }
 
-            if (collision.transform.tag == "Walls")
-            {
-                SceneManager.LoadScene("DeathScene");
-            }
+            
 
         }
 
-        
+        if (collision.transform.tag == "Walls")
+        {
+            SceneManager.LoadScene("DeathScene");
+        }
+
+
     }
 
 
