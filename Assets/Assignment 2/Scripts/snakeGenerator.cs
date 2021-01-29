@@ -74,7 +74,7 @@ public class snakeGenerator : MonoBehaviour
         
         breadcrumbBox = square;
 
-        playerBox.GetComponent<SpriteRenderer>().color = Color.red;
+        playerBox.GetComponent<SpriteRenderer>().color = Color.blue;
 
         //move the box with the arrow keys
         playerBox.AddComponent<snakeheadController>();
@@ -125,10 +125,6 @@ public class snakeGenerator : MonoBehaviour
 
 
     //TASK 2: We want to show or hide the trail we have just created.  What would be a good way of doing this?
-
-
-
-
     //TASK 3: We want to stop our box from going out of the camera.  
     //What would be an optimized way of making sure this doesn't happen
     //Mathf.Clamp is a very interesting function
@@ -343,9 +339,6 @@ public class snakeGenerator : MonoBehaviour
 
             //draw a tail of length 4
             drawTail(snakelength);
-
-
-
         }
 
         if (Input.GetKeyDown(KeyCode.X))

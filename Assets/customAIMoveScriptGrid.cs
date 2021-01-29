@@ -112,8 +112,10 @@ public class customAIMoveScriptGrid : MonoBehaviour
                         //if the path is different, update the path that I need to follow
                         posns = pathToFollow.vectorPath;
 
-                      //  Debug.Log("@:" + t.position + " " + target.position + " " + posns[counter]);
-                        yield return new WaitForSeconds(0.2f);
+                        //  Debug.Log("@:" + t.position + " " + target.position + " " + posns[counter]);
+                        Camera.main.GetComponent<enemySnakeGenerators>().savePosition();
+                        Camera.main.GetComponent<enemySnakeGenerators>().drawTail(Camera.main.GetComponent<enemySnakeGenerators>().snakelength);
+                        yield return new WaitForSeconds(0.5f);
                     }
 
                 }

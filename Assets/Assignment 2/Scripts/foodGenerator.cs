@@ -77,7 +77,7 @@ public class foodGenerator : MonoBehaviour
     {
         while(true)
         {
-            if (getVisibleFood() < 100) {
+            if (getVisibleFood() < 6) {
 
                 Vector3 randomLocation;
                 do
