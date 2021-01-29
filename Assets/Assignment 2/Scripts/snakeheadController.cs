@@ -58,15 +58,39 @@ public class snakeheadController : MonoBehaviour
                 { 
                     SceneManager.LoadScene("Level2");
                 }
+            }           
+
+        }
+
+
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            if (collision.transform.tag == "targetnode")
+            {
+                
+                SceneManager.LoadScene("Level3");
+                
             }
 
-            
+        }
+
+        if (SceneManager.GetActiveScene().name == "Level3")
+        {
+            if (collision.transform.tag == "targetnode")
+            {
+
+                SceneManager.LoadScene("WinScene");
+
+            }
 
         }
 
         if (collision.transform.tag == "Walls")
         {
-            SceneManager.LoadScene("DeathScene");
+            //SceneManager.LoadScene("DeathScene");
+            FindObjectOfType<GameManager>().endGame();
+
+
         }
 
 

@@ -9,15 +9,17 @@ public class obstacleMovementScript : MonoBehaviour
     public int addTo;
     public int removeFrom;
     public bool toggleForX;
-    public int speed;
+    public float speed;
     private Vector3 origin;
     Vector3 originPlus;
     Vector3 originMinus;
+    GameManager gameManager;
 
-   
+
 
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         origin = this.transform.position;
 
         if (toggleForX)
@@ -50,28 +52,38 @@ public class obstacleMovementScript : MonoBehaviour
 
             for (int i = 0; i < addTo; i++) {
                 print("Moving towards: "+originPlus);
+
+                
                 this.transform.position = Vector3.MoveTowards(this.transform.position, originPlus, 1f);
+                gameManager.Scan();
                 yield return new WaitForSeconds(1 / speed);
             }
 
             for (int i = 0; i < addTo; i++)
             {
                 print("Moving towards: " + origin);
+                
                 this.transform.position = Vector3.MoveTowards(this.transform.position, origin, 1f);
+                gameManager.Scan();
                 yield return new WaitForSeconds(1 / speed);
             }
 
             for (int i = 0; i < removeFrom; i++)
             {
                 print("Moving towards: " + originMinus);
+                
                 this.transform.position = Vector3.MoveTowards(this.transform.position, originMinus, 1f);
+                gameManager.Scan();
                 yield return new WaitForSeconds(1 / speed);
             }
 
             for (int i = 0; i < removeFrom; i++)
             {
                 print("Moving towards: " + origin);
+
+               
                 this.transform.position = Vector3.MoveTowards(this.transform.position, origin, 1f);
+                gameManager.Scan();
                 yield return new WaitForSeconds(1 / speed);
             }
         

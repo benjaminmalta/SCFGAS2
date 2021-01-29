@@ -7,15 +7,26 @@ public class timerManager : MonoBehaviour
 {
 
     public bool timerStarted;
+    public bool timerPaused = false;
 
     float timerValue=0f;
 
     Text timerText;
-    
+    public GameManager gameManager;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        timerValue = gameManager.time;
+        //the text component attached to THIS object
+        timerText = GetComponent<Text>();
+        StartCoroutine(timer());
+    }
 
     IEnumerator timer()
     {
-        while(true)
+        while(!timerPaused)
         { 
             if (timerStarted)
             {
@@ -26,7 +37,7 @@ public class timerManager : MonoBehaviour
                 float seconds = timerValue % 60f;
 
                 timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-
+                gameManager.time = timerValue;
 
                 //code that is running every second
                 yield return new WaitForSeconds(1f);
@@ -44,13 +55,7 @@ public class timerManager : MonoBehaviour
     }
 
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        //the text component attached to THIS object
-        timerText = GetComponent<Text>();
-        StartCoroutine(timer()); 
-    }
+    
 
     
 }

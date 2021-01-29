@@ -68,7 +68,7 @@
     <Compile Include="Assets\Assignment 2\Scripts\GameManager.cs" />
     <Compile Include="Assets\Resources\Scripts\UIScripts\eventsController.cs" />
     <Compile Include="Assets\customAIMoveScript.cs" />
-    <Compile Include="Assets\Resources\Scripts\UIScripts\timerManager.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\timerManager.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\customAIMoveScriptGrid.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\Assignment 1\obstacleMovementScript.cs" />
     <Compile Include="Assets\Resources\Scripts\UIScripts\startGameController.cs" />

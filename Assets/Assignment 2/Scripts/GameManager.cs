@@ -4,26 +4,93 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
+
 public class GameManager : MonoBehaviour
 {
-    public GameObject robotAI;
-    public GameObject obstacleObject;
-    
+    public Text usernameText;
+    public string username;
+
+    private GameObject robotAI;
+    private GameObject obstacleObject;
+    public GameObject timer;
+
+    public float time = 0;
+    GameObject timerUI;
+
     List<Vector3> positionRecord = new List<Vector3> { };
+
+    void Awake() {
+
+        setUpSingleton();
+
+    }
+
+    private void setUpSingleton()
+    {
+        int numberOfGameManagers = FindObjectsOfType<GameManager>().Length;
+        if (numberOfGameManagers > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+           
+        }
+    }
 
     private void Start()
     {
-        if(SceneManager.GetActiveScene().name == "Level1")
+        
+       
+
+        
+        
+        
+
+    }
+
+    void Update() 
+    {
+        if (SceneManager.GetActiveScene().name == "StartingScene")
+        {
+            username = usernameText.text;
+        }
+
+        if (timerUI == null) { 
+            if (!(SceneManager.GetActiveScene().name == "StartingScene"))
+            {                   
+
+
+                timerUI = Instantiate(timer, new Vector3(0f, 0f), Quaternion.identity);
+                timerUI.GetComponentInChildren<timerManager>().timerStarted = true;
+            
+            }
+        }
+
+        if (SceneManager.GetActiveScene().name == "Level1")
         {
             Camera.main.GetComponent<foodGenerator>().enabled = true;
             Camera.main.GetComponent<snakeGenerator>().enabled = true;
 
-           //Camera.main.GetComponent<enemySnakeGenerators>().enabled = true;
-           
+            //Camera.main.GetComponent<enemySnakeGenerators>().enabled = true;
         }
-      
+
+        if (SceneManager.GetActiveScene().name == "WinScene")
+        {
+            timerUI.GetComponentInChildren<timerManager>().timerPaused = true;
+        }
+
+
+
+
     }
 
+        public void startGame() 
+    {
+        SceneManager.LoadScene("Level1");
+    }
 
 
 
@@ -53,10 +120,18 @@ public class GameManager : MonoBehaviour
          *  which has very little to do with unity specific classes, while the second part has much more to do 
          *  with the unity interface.   
          */
-
-
-
     }
+
+
+    public void endGame() 
+    {
+
+
+        SceneManager.LoadScene("DeathScene");
+    }
+
+
+
 
 
     private void ObstacleGenerator(int obstacles) 

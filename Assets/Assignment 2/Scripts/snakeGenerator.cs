@@ -8,7 +8,7 @@ public class snakeGenerator : MonoBehaviour
 
     public int snakelength;
     public GameObject square;
-    public GameObject timer;
+    
     public Transform spawnpoint;
 
     foodGenerator fgen;
@@ -57,10 +57,9 @@ public class snakeGenerator : MonoBehaviour
 
         playerBox = Instantiate(square, spawnpoint.position, Quaternion.identity);
         //GetComponent<enemySnakeGenerators>().SpawnSnakes();
-        timerUI = Instantiate(timer, new Vector3(0f, 0f), Quaternion.identity);
+        
 
-        //the default value for the timer is started
-        timerUI.GetComponentInChildren<timerManager>().timerStarted = true;
+        
 
        
 
