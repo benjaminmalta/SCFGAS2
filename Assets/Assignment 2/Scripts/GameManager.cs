@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using TMPro;
 
 
 public class GameManager : MonoBehaviour
@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     private GameObject robotAI;
     private GameObject obstacleObject;
     public GameObject timer;
+
+    Button playAgainBtn;
 
     public float time = 0;
     GameObject timerUI;
@@ -41,13 +43,9 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {
-        
-       
-
-        
-        
-        
+    {     
+                  
+             
 
     }
 
@@ -55,6 +53,8 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "StartingScene")
         {
+            
+            usernameText = GameObject.Find("Text").GetComponent<Text>();
             username = usernameText.text;
         }
 
@@ -77,17 +77,23 @@ public class GameManager : MonoBehaviour
             //Camera.main.GetComponent<enemySnakeGenerators>().enabled = true;
         }
 
-        if (SceneManager.GetActiveScene().name == "WinScene")
+        if (SceneManager.GetActiveScene().name == "WinScene" || SceneManager.GetActiveScene().name == "DeathScene")
         {
             timerUI.GetComponentInChildren<timerManager>().timerPaused = true;
+            
+
         }
-
-
-
-
     }
 
-        public void startGame() 
+    public void playAgain() 
+    {
+        username = "";
+        time = 0;
+        SceneManager.LoadScene("StartingScene");
+    }   
+    
+
+    public void startGame() 
     {
         SceneManager.LoadScene("Level1");
     }

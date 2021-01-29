@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class timerManager : MonoBehaviour
@@ -58,7 +59,12 @@ public class timerManager : MonoBehaviour
             float minutes = timerValue / 60f;
             float seconds = timerValue % 60f;
             timerText.color = Color.yellow;
-            
+            if (SceneManager.GetActiveScene().name == "DeathScene")
+            {
+                timerText.color = Color.red;
+
+            }
+                      
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
         }
