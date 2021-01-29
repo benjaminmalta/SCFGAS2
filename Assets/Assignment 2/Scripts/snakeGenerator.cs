@@ -73,14 +73,22 @@ public class snakeGenerator : MonoBehaviour
 
         
         breadcrumbBox = square;
+        breadcrumbBox.name  = "playerTail";
+        breadcrumbBox.tag   = "Player";
+        
+
 
         playerBox.GetComponent<SpriteRenderer>().color = Color.blue;
-
         //move the box with the arrow keys
         playerBox.AddComponent<snakeheadController>();
-        playerBox.AddComponent<BoxCollider2D>();
+        
+        playerBox.AddComponent<Rigidbody2D>();
+        playerBox.GetComponent<Rigidbody2D>().isKinematic = true;
+        
         playerBox.name = "Blackplayerbox";
+        playerBox.tag = "Player";
         playerBox.GetComponent<BoxCollider2D>().size = new Vector2(0.8f,0.8f);
+        breadcrumbBox.GetComponent<BoxCollider2D>().size = new Vector2(0.8f, 0.8f);
 
         pastPositions = new List<positionRecord>();
 

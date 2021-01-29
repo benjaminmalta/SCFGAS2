@@ -77,8 +77,6 @@ public class enemySnakeGenerators : MonoBehaviour
         Vector3 randomFoodPos = foodGen.allTheFood[Random.Range(0, foodAmmount-1)].Position;
         SpawnSnakes(randomFoodPos);
 
-
-
     }
 
 

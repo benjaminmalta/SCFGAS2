@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using Pathfinding;
-
+using UnityEngine.SceneManagement;
 
 public class customAIMoveScriptGrid : MonoBehaviour
 {
@@ -47,8 +46,8 @@ public class customAIMoveScriptGrid : MonoBehaviour
         graphParent.GetComponent<AstarPath>().Scan();
         //target = GameObject.Find("Blackplayerbox").transform;
         //generate the initial path
-        
-       
+
+        this.gameObject.AddComponent<BoxCollider2D>();
 
 
         StartCoroutine(moveTowardsEnemy(this.transform));
@@ -59,6 +58,19 @@ public class customAIMoveScriptGrid : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.transform.tag == "Player") 
+        {
+            SceneManager.LoadScene("DeathScene");
+        }
+        
+            
+            //SceneManager.LoadScene("DeathScene");
+        
+    }
+
     private void Update()
     {
         
@@ -66,6 +78,8 @@ public class customAIMoveScriptGrid : MonoBehaviour
        
 
     }
+
+    
 
 
 
