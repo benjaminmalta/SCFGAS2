@@ -34,10 +34,8 @@ public class foodGenerator : MonoBehaviour
 
         snakeHeadPos.Position = snakeHeadPosition;
 
-        int foodIndex = allTheFood.IndexOf(snakeHeadPos);
-        
-       
-        
+        int foodIndex = allTheFood.IndexOf(snakeHeadPos);     
+              
 
 
         //if I have a list as follows
@@ -69,9 +67,52 @@ public class foodGenerator : MonoBehaviour
             
         }
 
+    }
 
+    public void eatFood(Vector3 snakeHeadPosition, enemySnakeGenerators esg)
+    {
+        positionRecord snakeHeadPos = new positionRecord();
+
+        snakeHeadPos.Position = snakeHeadPosition;
+
+        int foodIndex = allTheFood.IndexOf(snakeHeadPos);
+
+
+
+        //if I have a list as follows
+
+        //1. = 0 positionRecord1 in Vector3(0f,0f);
+        //2. Vector3(1,0)
+        //3. VEctor3(2,0)
+
+        //indexof(0,0) = 0
+
+        //indexof(-5,2) = -1
+
+
+        if (foodIndex != -1)
+        {
+
+            //Color foodColor;
+
+            //foodColor = allTheFood[foodIndex].BreadcrumbBox.GetComponent<SpriteRenderer>().color;
+
+            //sn.changeSnakeColor(sn.snakelength,foodColor);
+
+            Destroy(allTheFood[foodIndex].BreadcrumbBox);
+
+            allTheFood.RemoveAt(foodIndex);
+
+            esg.snakelength++;
+
+
+        }
 
     }
+
+
+
+
 
     public IEnumerator generateFood()
     {

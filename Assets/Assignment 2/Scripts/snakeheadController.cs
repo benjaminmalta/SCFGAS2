@@ -120,7 +120,10 @@ public class snakeheadController : MonoBehaviour
 
             if (mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength))
             {
+
+                
                 print("DIE!");
+                SceneManager.LoadScene("DeathScene");
             }
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -133,7 +136,9 @@ public class snakeheadController : MonoBehaviour
 
             if (mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength))
             {
+
                 print("DIE!");
+                SceneManager.LoadScene("DeathScene");
             }
 
         }
@@ -148,6 +153,7 @@ public class snakeheadController : MonoBehaviour
             if (mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength))
             {
                 print("DIE!");
+                SceneManager.LoadScene("DeathScene");
             }
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -161,6 +167,7 @@ public class snakeheadController : MonoBehaviour
             if (mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength))
             {
                 print("DIE!");
+                SceneManager.LoadScene("DeathScene");
             }
         }
 

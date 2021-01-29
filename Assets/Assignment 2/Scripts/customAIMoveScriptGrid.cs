@@ -129,6 +129,7 @@ public class customAIMoveScriptGrid : MonoBehaviour
                         //  Debug.Log("@:" + t.position + " " + target.position + " " + posns[counter]);
                         Camera.main.GetComponent<enemySnakeGenerators>().savePosition();
                         Camera.main.GetComponent<enemySnakeGenerators>().drawTail(Camera.main.GetComponent<enemySnakeGenerators>().snakelength);
+                        Camera.main.GetComponent<foodGenerator>().eatFood(t.position, Camera.main.GetComponent<enemySnakeGenerators>());
                         yield return new WaitForSeconds(0.5f);
                     }
 
