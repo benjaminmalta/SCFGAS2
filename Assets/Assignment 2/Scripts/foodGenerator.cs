@@ -54,11 +54,11 @@ public class foodGenerator : MonoBehaviour
         if (foodIndex != -1)
         { 
 
-            Color foodColor;
+            //Color foodColor;
 
-            foodColor = allTheFood[foodIndex].BreadcrumbBox.GetComponent<SpriteRenderer>().color;
+            //foodColor = allTheFood[foodIndex].BreadcrumbBox.GetComponent<SpriteRenderer>().color;
 
-            sn.changeSnakeColor(sn.snakelength,foodColor);
+            //sn.changeSnakeColor(sn.snakelength,foodColor);
 
             Destroy(allTheFood[foodIndex].BreadcrumbBox);
 
@@ -77,7 +77,7 @@ public class foodGenerator : MonoBehaviour
     {
         while(true)
         {
-            if (getVisibleFood() < 6) {
+            if (getVisibleFood() < 100) {
 
                 Vector3 randomLocation;
                 do
@@ -86,18 +86,19 @@ public class foodGenerator : MonoBehaviour
 
                     foodPosition = new positionRecord();
 
-                    float randomX = Mathf.Floor(Random.Range(-9f, 9f));
+                    float randomX = Mathf.Floor(Random.Range(-15f, 15f));
 
-                    float randomY = Mathf.Floor(Random.Range(-9f, 9f));
+                    float randomY = Mathf.Floor(Random.Range(-15f, 15f));
 
                     randomLocation = new Vector3(randomX + 0.5f, randomY + 0.5f);
                 }
                 while (Physics2D.OverlapCircleAll(randomLocation, 0.1f).Length != 0);
 
 
-                //don't allow the food to be spawned on other food
+                //don't allow the food to be spawned on other food            
 
                 foodPosition.Position = randomLocation;
+                //print("Disance: "+ allTheFood.Equals(foodPosition));
 
                 if (!allTheFood.Contains(foodPosition) && !sn.hitTail(foodPosition.Position,sn.snakelength))
                 {                                     
@@ -108,7 +109,7 @@ public class foodGenerator : MonoBehaviour
                     foodPosition.BreadcrumbBox.transform.localScale = new Vector3(0.5f,0.5f);
 
 
-                    foodPosition.BreadcrumbBox.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
+                    foodPosition.BreadcrumbBox.GetComponent<SpriteRenderer>().color = Color.red;
 
                     foodPosition.BreadcrumbBox.transform.localScale = new Vector3(0.5f, 0.5f);
 

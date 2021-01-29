@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class snakeheadController : MonoBehaviour
 {
     snakeGenerator mysnakegenerator;
@@ -50,6 +50,23 @@ public class snakeheadController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         print("Collided with: " + collision.transform.tag);
+        if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            if (collision.transform.tag == "targetnode") 
+            {
+                if (mysnakegenerator.snakelength >= 6) 
+                { 
+                SceneManager.LoadScene("Level2");
+                }
+            }
+
+            if (collision.transform.tag == "Walls")
+            {
+                SceneManager.LoadScene("DeathScene");
+            }
+
+        }
+
         
     }
 
@@ -83,10 +100,11 @@ public class snakeheadController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.transform.position == targetLocation.position)
+        /*if (this.transform.position == targetLocation.position)
         {
-            print("Snake Reached Target");
-        }
+            //print("Snake Reached Target");
+
+        }*/
 
         
         if (Input.GetKeyDown(KeyCode.LeftArrow))

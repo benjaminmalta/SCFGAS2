@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Level1")
         {
             Camera.main.GetComponent<foodGenerator>().enabled = true;
-           Camera.main.GetComponent<snakeGenerator>().enabled = true;
+            Camera.main.GetComponent<snakeGenerator>().enabled = true;
+
            //Camera.main.GetComponent<enemySnakeGenerators>().enabled = true;
            
         }

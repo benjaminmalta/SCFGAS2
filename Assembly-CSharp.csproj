@@ -58,6 +58,7 @@
     <Compile Include="Assets\Assignment 2\Scripts\snakeGenerator.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\Assignment 1\KU4PatrolBehaviourScript.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\foodGenerator.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\enemySnakeGenerators.cs" />
     <Compile Include="Assets\highScoreController.cs" />
     <Compile Include="Assets\agentScript.cs" />
     <Compile Include="Assets\Resources\PlayerPrefsX.cs" />
@@ -71,7 +72,6 @@
     <Compile Include="Assets\customAIMoveScriptGrid.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\Assignment 1\obstacleMovementScript.cs" />
     <Compile Include="Assets\Resources\Scripts\UIScripts\startGameController.cs" />
-    <Compile Include="Assets\enemySnakeGenerators.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

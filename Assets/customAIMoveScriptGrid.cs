@@ -62,7 +62,7 @@ public class customAIMoveScriptGrid : MonoBehaviour
     private void Update()
     {
         
-        print("Position of playerbox"+target.position);
+        //print("Position of playerbox"+target.position);
        
 
     }

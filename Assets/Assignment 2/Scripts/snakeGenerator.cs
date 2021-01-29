@@ -419,12 +419,12 @@ public class positionRecord
 
     public bool Equals(positionRecord o)
     {
+        
         if (o == null)
             return false;
-
-
+                
         //the distance between any food spawned
-        return Vector3.Distance(this.position, o.position) < 2f;
+        return Vector3.Distance(this.position, o.position) < 4f;
 
 
     }
