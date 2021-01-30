@@ -58,9 +58,9 @@
     <Compile Include="Assets\Assignment 2\Scripts\snakeGenerator.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\Assignment 1\KU4PatrolBehaviourScript.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\foodGenerator.cs" />
-    <Compile Include="Assets\playAgain.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\playAgain.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\enemySnakeGenerators.cs" />
-    <Compile Include="Assets\highScoreController.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\highScoreController.cs" />
     <Compile Include="Assets\agentScript.cs" />
     <Compile Include="Assets\Resources\PlayerPrefsX.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\squareGenerator.cs" />

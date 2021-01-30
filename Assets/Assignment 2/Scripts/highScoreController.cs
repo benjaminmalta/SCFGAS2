@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 
 public class HighScore
 {
@@ -21,15 +21,21 @@ public class highScoreController : MonoBehaviour
 {
     // Start is called before the first frame update
     List<HighScore> myHighScores;
+    GameManager gameManager;
 
+    public TMP_Text contentText;
 
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        LoadList();
+        gameManager = FindObjectOfType<GameManager>();
         myHighScores = new List<HighScore>();
 
-        myHighScores.Add(new HighScore("Gerry", 65.5f));
-        myHighScores.Add(new HighScore("Joey", 60.5f));
+        myHighScores.Add(new HighScore(gameManager.username, gameManager.time));
+        //myHighScores.Add(new HighScore("1", 1));
+       
+        SaveList();
+        DisplayList();
 
     }
 
@@ -38,7 +44,12 @@ public class highScoreController : MonoBehaviour
         foreach (HighScore s in myHighScores)
         {
             Debug.Log(s.playername + " " + s.playtime);
+            contentText.text = (s.playername + " with time: " + s.playtime);
+
         }
+
+
+
     }
 
     void SaveList()
@@ -71,35 +82,17 @@ public class highScoreController : MonoBehaviour
         names = PlayerPrefsX.GetStringArray("PlayerNames");
         playertimes = PlayerPrefsX.GetFloatArray("PlayerTimes");
 
+        
+        for (int i = 0; i < names.Length; i++)
+        {
+            contentText.text += (names[0].ToString() + " with time: " + playertimes[0].ToString());
+            print(names.Length);
+            print(names[i].ToString() + " with time: " + playertimes[i].ToString());
+
+        }
+
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SceneManager.LoadScene("SceneB");
-        }
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            SceneManager.LoadScene("SceneA");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            SaveList();
-        }
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            LoadList();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DisplayList();
-        }
-    }
 }

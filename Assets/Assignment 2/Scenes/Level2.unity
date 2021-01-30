@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AI: {fileID: 8643994906171561233, guid: f0e104f2078fe2842abbfa769d82d1eb, type: 3}
-  breadcrumbBox: {fileID: 8087725052837249148, guid: 8ca1c9a1c2cfa204684ee152cca06f69, type: 3}
+  breadcrumbBox: {fileID: 4281018169032809772, guid: bdd56f2513b52b64da174857b08103b6, type: 3}
   snakelength: 4
   spawnLocation: {fileID: 147650883}
 --- !u!114 &1567364342

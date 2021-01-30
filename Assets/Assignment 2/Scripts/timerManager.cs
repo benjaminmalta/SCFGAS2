@@ -10,7 +10,7 @@ public class timerManager : MonoBehaviour
     public bool timerStarted;
     public bool timerPaused = false;
 
-    float timerValue=0f;
+    //float timerValue=0f;
 
     Text timerText;
     public GameManager gameManager;
@@ -19,7 +19,7 @@ public class timerManager : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        timerValue = gameManager.time;
+        //timerValue = gameManager.time;
         //the text component attached to THIS object
         timerText = GetComponent<Text>();
         StartCoroutine(timer());
@@ -32,13 +32,13 @@ public class timerManager : MonoBehaviour
             if (timerStarted)
             {
                 //measure the time
-                timerValue++;
+                gameManager.time++;
 
-                float minutes = timerValue / 60f;
-                float seconds = timerValue % 60f;
+                float minutes = Mathf.FloorToInt(gameManager.time / 60f);
+                float seconds = Mathf.FloorToInt(gameManager.time % 60f);
 
                 timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-                gameManager.time = timerValue;
+                
 
                 //code that is running every second
                 yield return new WaitForSeconds(1f);
@@ -46,7 +46,7 @@ public class timerManager : MonoBehaviour
             else
             {
                 //don't measure the time
-                timerValue = 0f;
+                gameManager.time = 0f;
                 timerText.text = string.Format("{0:00}:{1:00}", 0f, 0f);
                 yield return null;
 
@@ -56,8 +56,8 @@ public class timerManager : MonoBehaviour
 
         if (timerPaused) 
         {
-            float minutes = timerValue / 60f;
-            float seconds = timerValue % 60f;
+            float minutes = Mathf.FloorToInt(gameManager.time / 60f);
+            float seconds = Mathf.FloorToInt(gameManager.time % 60f);
             timerText.color = Color.yellow;
             if (SceneManager.GetActiveScene().name == "DeathScene")
             {
