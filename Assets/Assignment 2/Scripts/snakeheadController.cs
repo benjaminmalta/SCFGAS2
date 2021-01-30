@@ -87,6 +87,8 @@ public class snakeheadController : MonoBehaviour
 
         if (collision.transform.tag == "Walls")
         {
+
+            print("Died because collision with walls");
             //SceneManager.LoadScene("DeathScene");
             FindObjectOfType<GameManager>().endGame();
 

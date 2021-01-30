@@ -63,6 +63,7 @@ public class customAIMoveScriptGrid : MonoBehaviour
 
         if (collision.transform.tag == "Player") 
         {
+            Debug.Log("Died Because Collided with "+ collision.transform.tag);
             SceneManager.LoadScene("DeathScene");
         }
         

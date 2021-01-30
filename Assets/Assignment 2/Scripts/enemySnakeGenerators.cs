@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 
 
@@ -43,6 +43,14 @@ public class enemySnakeGenerators : MonoBehaviour
         //clearTail();
         //print(pastPositions.Count);
 
+        //if (SceneManager.GetActiveScene().name == "Level3") 
+        //{
+        //    if (!doOnce) 
+        //    {
+        //        doOnce = true;
+        //    }
+        //}
+
         if (doOnce) { 
         time = time + Time.deltaTime;
         if (time > 3) 
@@ -75,6 +83,7 @@ public class enemySnakeGenerators : MonoBehaviour
         print("Food spawned after 3 seconds" + foodAmmount);
 
         Vector3 randomFoodPos = foodGen.allTheFood[Random.Range(0, foodAmmount-1)].Position;
+        spawnLocation.position = randomFoodPos;
         SpawnSnakes(randomFoodPos);
 
     }
