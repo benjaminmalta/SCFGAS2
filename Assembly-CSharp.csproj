@@ -62,19 +62,19 @@
     <Compile Include="Assets\Assignment 2\Scripts\enemySnakeGenerators.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\highScoreController.cs" />
     <Compile Include="Assets\agentScript.cs" />
-    <Compile Include="Assets\Resources\PlayerPrefsX.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\PlayerPrefsX.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\squareGenerator.cs" />
     <Compile Include="Assets\exerciseScript.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\snakeheadController.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\obstacleMoveWaypoints.cs" />
     <Compile Include="Assets\Resources\Scripts\UIScripts\eventsController.cs" />
+    <Compile Include="Assets\Assignment 2\Scripts\scoreManager.cs" />
     <Compile Include="Assets\customAIMoveScript.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\timerManager.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\customAIMoveScriptGrid.cs" />
     <Compile Include="Assets\Assignment 2\Scripts\Assignment 1\obstacleMovementScript.cs" />
     <Compile Include="Assets\Resources\Scripts\UIScripts\startGameController.cs" />
-    <Compile Include="Assets\Assignment 2\Scripts\obstacleMoveWaypoints.cs" />
-    <Compile Include="Assets\Assignment 2\Scripts\scoreManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
