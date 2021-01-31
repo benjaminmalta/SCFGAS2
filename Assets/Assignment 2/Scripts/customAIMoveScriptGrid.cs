@@ -23,7 +23,7 @@ public class customAIMoveScriptGrid : MonoBehaviour
 
     public List<Transform> obstacleNodes;
 
-
+    bool spacePressed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +53,7 @@ public class customAIMoveScriptGrid : MonoBehaviour
         StartCoroutine(moveTowardsEnemy(this.transform));
         //update the graph as soon as you can.  Runs indefinitely
         StartCoroutine(updateGraph());
-
+        
         //move the red robot towards the green enemy
         
     }
@@ -74,9 +74,25 @@ public class customAIMoveScriptGrid : MonoBehaviour
 
     private void Update()
     {
-        
-        //print("Position of playerbox"+target.position);
+
+
+        if (Input.GetKey("space"))
+        {
+
+            LineRenderer lineRenderer = GetComponent<LineRenderer>();// lineRenderer.pos             
+            lineRenderer.positionCount = posns.Count;
+            lineRenderer.SetPositions(pathToFollow.vectorPath.ToArray());
+        }
+        else {
+            LineRenderer lineRenderer = GetComponent<LineRenderer>();
+            lineRenderer.positionCount = 0;
+        }
+
        
+
+
+
+
 
     }
 
@@ -93,16 +109,24 @@ public class customAIMoveScriptGrid : MonoBehaviour
 
       //   targetNode.transform.position = target.position;
             graphParent.GetComponent<AstarPath>().Scan();
+                       
 
 
             yield return null;
+
+
+
 
         }
 
     }
 
+  
 
 
+
+
+    List<Vector3> posns;
 
     IEnumerator moveTowardsEnemy(Transform t)
     {
@@ -110,7 +134,7 @@ public class customAIMoveScriptGrid : MonoBehaviour
         while (true)
         {
 
-            List<Vector3> posns = pathToFollow.vectorPath;
+            posns = pathToFollow.vectorPath;
             Debug.Log("Positions Count: " + posns.Count);
 
             for (int counter = 0; counter < posns.Count; counter++)
@@ -128,6 +152,7 @@ public class customAIMoveScriptGrid : MonoBehaviour
                         posns = pathToFollow.vectorPath;
 
                         //  Debug.Log("@:" + t.position + " " + target.position + " " + posns[counter]);
+                        
                         Camera.main.GetComponent<enemySnakeGenerators>().savePosition();
                         Camera.main.GetComponent<enemySnakeGenerators>().drawTail(Camera.main.GetComponent<enemySnakeGenerators>().snakelength);
                         Camera.main.GetComponent<foodGenerator>().eatFood(t.position, Camera.main.GetComponent<enemySnakeGenerators>());

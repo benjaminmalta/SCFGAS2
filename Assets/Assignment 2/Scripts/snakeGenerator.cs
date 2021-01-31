@@ -359,11 +359,11 @@ public class snakeGenerator : MonoBehaviour
             clearTail();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(snakeController.automoveCoroutine());
-          //  StartCoroutine(Task5());
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    StartCoroutine(snakeController.automoveCoroutine());
+        //  //  StartCoroutine(Task5());
+        //}
 
 
     }
